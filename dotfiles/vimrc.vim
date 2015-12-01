@@ -57,6 +57,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'mkarmona/colorsbox'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -172,7 +173,7 @@ set foldcolumn=1
 syntax enable 
 
 try
-    colorscheme desert
+    colorscheme colorsbox-stbright
 catch
 endtry
 
