@@ -38,6 +38,7 @@
 "    -> Spell checking
 "    -> Misc
 "    -> Helper functions
+"    -> Syntastic settings
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -57,7 +58,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'scrooloose/syntastic'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'tpope/vim-vinegar'
 Plugin 'mkarmona/colorsbox'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'jimhester/lintr', {'rtp': 'inst/syntastic'}
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -173,7 +179,7 @@ set foldcolumn=1
 syntax enable 
 
 try
-    colorscheme colorsbox-stbright
+    colorscheme jellybeans
 catch
 endtry
 
@@ -455,4 +461,16 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
