@@ -26,6 +26,7 @@
 " Sections:
 "    -> Vundle plugin manager
 "    -> General
+"    -> Fun
 "    -> VIM user interface
 "    -> Colors and Fonts
 "    -> Files and backups
@@ -39,6 +40,7 @@
 "    -> Misc
 "    -> Helper functions
 "    -> Syntastic settings
+"    -> YouCompleteMe settings
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -64,6 +66,8 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'mkarmona/colorsbox'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'jimhester/lintr', {'rtp': 'inst/syntastic'}
+Plugin 'drmikehenry/vim-extline'
+Plugin 'Valloric/YouCompleteMe'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -87,8 +91,8 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader=","
+let g:mapleader=","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -96,6 +100,12 @@ nmap <leader>w :w!<cr>
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fun 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+echom ">^.^<"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -171,6 +181,9 @@ set tm=500
 " Add a bit extra margin to the left
 set foldcolumn=1
 
+" Dsiplay line numbers
+set number
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -179,7 +192,7 @@ set foldcolumn=1
 syntax enable 
 
 try
-    colorscheme jellybeans
+    colorscheme obsidian
 catch
 endtry
 
@@ -191,13 +204,14 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
+    set guifont=Source\ Code\ Pro\ Medium
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
 " Use Unix as the standard file type
-set ffs=unix,dos,mac
+set ffs=unix,mac,dos
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -400,6 +414,9 @@ map <leader>x :e ~/buffer.md<cr>
 map <leader>pp :setlocal paste!<cr>
 
 
+" Python related stuff
+let python_highlight_all=1
+syntax on
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -470,7 +487,12 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_loc_list_height = 5
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => YouCompleteMe settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
