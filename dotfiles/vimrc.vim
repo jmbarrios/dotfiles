@@ -61,13 +61,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'tpope/vim-vinegar'
 Plugin 'mkarmona/colorsbox'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'jimhester/lintr', {'rtp': 'inst/syntastic'}
 Plugin 'drmikehenry/vim-extline'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-fugitive'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -105,7 +106,6 @@ command W w !sudo tee % > /dev/null
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fun 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-echom ">^.^<"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
