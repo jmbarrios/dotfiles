@@ -41,6 +41,8 @@
 "    -> Helper functions
 "    -> Syntastic settings
 "    -> YouCompleteMe settings
+"    -> NERDtree settings
+"    -> Latexmk compilation settings
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -204,7 +206,7 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set guifont=Source\ Code\ Pro\ Medium
+    set guifont=Source\ Code\ Pro\ ExtraLight
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -495,4 +497,15 @@ let g:syntastic_check_on_wq = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YouCompleteMe settings 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_autoclose_preview_window_after_insertion = 1
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NERDtree settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <C-n> :NERDTreeToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Latexmk compilation settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:LatexBox_latexmk_options = "-xelatex"
