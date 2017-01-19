@@ -71,6 +71,7 @@ Plugin 'drmikehenry/vim-extline'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'vimwiki/vimwiki'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
