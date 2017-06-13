@@ -42,6 +42,7 @@
 "    -> YouCompleteMe settings
 "    -> NERDtree settings
 "    -> Latexmk compilation settings
+"    -> Ctrlp settings
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -63,8 +64,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mkarmona/colorsbox'
+Plugin 'danilo-augusto/vim-afterglow'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'jimhester/lintr', {'rtp': 'inst/syntastic'}
 Plugin 'drmikehenry/vim-extline'
@@ -195,7 +198,7 @@ set number
 syntax enable 
 
 try
-    colorscheme obsidian
+    colorschemei OceanicNext
 catch
 endtry
 
@@ -512,3 +515,9 @@ map <C-n> :NERDTreeToggle<CR>
 " => Latexmk compilation settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:LatexBox_latexmk_options = "-xelatex"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ctrlp settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_map='<c-p>'
+let g:ctrlp_cmd='CtrlP'
