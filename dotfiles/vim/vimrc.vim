@@ -32,13 +32,11 @@
 "    -> Text, tab and indent related
 "    -> Visual mode related
 "    -> Moving around, tabs and buffers
-"    -> Status line
 "    -> Editing mappings
 "    -> vimgrep searching and cope displaying
 "    -> Spell checking
 "    -> Misc
 "    -> Helper functions
-"    -> Syntastic settings
 "    -> YouCompleteMe settings
 "    -> NERDtree settings
 "    -> Latexmk compilation settings
@@ -62,19 +60,21 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-" Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/goyo.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mkarmona/colorsbox'
 Plugin 'danilo-augusto/vim-afterglow'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'jimhester/lintr', {'rtp': 'inst/syntastic'}
-Plugin 'drmikehenry/vim-extline'
+" Plugin 'jimhester/lintr', {'rtp': 'inst/syntastic'}
+" Plugin 'drmikehenry/vim-extline'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
-Plugin 'leafgarland/typescript-vim'
+" Plugin 'leafgarland/typescript-vim'
 Plugin 'jalvesaq/Nvim-R'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
@@ -100,7 +100,6 @@ set autoread
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader=","
-let g:mapleader=","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -108,12 +107,6 @@ nmap <leader>w :w!<cr>
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fun 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -188,7 +181,7 @@ set tm=500
 " Add a bit extra margin to the left
 set foldcolumn=1
 
-" Dsiplay line numbers
+" Display line numbers
 set number
 
 
@@ -323,20 +316,6 @@ endtry
 " set viminfo^=%
 
 
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Powerline settings
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -371,13 +350,13 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 "    requires ag.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press gv you Ag after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+" vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ag and put the cursor in the right position
-map <leader>g :Ag 
+" map <leader>g :Ag 
 
 " When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+" vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
@@ -390,10 +369,10 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " To go to the previous search results do:
 "   <leader>p
 "
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+" map <leader>cc :botright cope<cr>
+" map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+" map <leader>n :cn<cr>
+" map <leader>p :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -491,21 +470,6 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic settings 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_loc_list_height = 5
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YouCompleteMe settings 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -533,3 +497,8 @@ let R_tmux_split = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map='<c-p>'
 let g:ctrlp_cmd='CtrlP'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Airline settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_theme='kolor'
