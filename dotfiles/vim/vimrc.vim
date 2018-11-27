@@ -192,7 +192,7 @@ set number
 syntax enable 
 
 try
-    colorschemei OceanicNext
+    colorscheme oceanblack
 catch
 endtry
 
@@ -501,4 +501,10 @@ let g:ctrlp_cmd='CtrlP'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Airline settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme='kolor'
+let g:airline_theme='bubblegum'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#close_symbol = '×'
+let g:airline#extensions#tabline#show_close_button = 0
