@@ -1,0 +1,14 @@
+! Using Source Code Pro by Nerd Font
+! URxvt.font: xft:SauceCodePro Nerd Font Mono:light:size=11,xft:PowerlineSymbols
+URxvt.font: xft:Hack:size=12
+
+! Hide scrollbar
+URxvt.scrollBar: False
+
+! Perl extensions
+! Fullscreen
+URxvt.perl-ext-common: fullscreen
+URxvt.keysym.F11: perl:fullscreen:switch
+
+! Theme
+#include ".myTerminalTheme"

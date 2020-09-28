@@ -1,0 +1,7 @@
+configuration {
+  modi: "combi";
+  font: "hack 10";
+  theme: "gruvbox-dark-hard";
+  terminal: "alacritty";
+  combi-modi: "drun,ssh";
+}
