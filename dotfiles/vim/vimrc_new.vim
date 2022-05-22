@@ -10,10 +10,13 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --java-completer --ts-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer --ts-completer' }
+Plug 'lejafar/vim-pipenv-ycm'
 Plug 'lervag/vimtex'
-" Plug 'scrooloose/nerdtree'
-" Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
+Plug 'jidn/vim-dbml'
 " Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 " Plug 'vimwiki/vimwiki'
 " Plug 'junegunn/goyo.vim'
@@ -102,6 +105,7 @@ autocmd BufWritePre *.py,*.js :call DeleteTrailingWS()
 
 " Custom abbrevations {{{
 iabbrev jmbconabio Juan M. Barrios <juan.barrios@conabio.gob.mx>
+iabbrev jmbau Juan M. Barrios <j.m.barrios@gmail.com>
 iabbrev <expr> datetoday strftime("%Y-%m-%d")
 " }}}
 
@@ -153,8 +157,10 @@ endif
 autocmd VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 " }}}
 
-" NERDTree
-" map <C-n> :NERDTreeToggle<CR>
+" NERDTree ----------- {{{
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeGitStatusUseNerdFonts = 1
+" }}}
 
 " Vimtex
 " let g:vimtex_view_general_viewer = 'evince'

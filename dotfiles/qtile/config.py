@@ -86,21 +86,21 @@ keys = [
 ]
 
 # Keybiding for float
-for key, x, y in [("Left", -10, 0),
-                  ("Right", 10, 0),
-                  ("Up", 0, -10),
-                  ("Down", 0, 10)]:
-    keys.append(Key([MOD, "control"], key, lazy.window.move_floating(x, y)))
-    keys.append(Key([MOD, "shift"], key, lazy.window.resize_floating(x, y)))
-    keys.append(Key([MOD, "mod1"], key, lazy.window.move_to_screen_edge(key)))
+# for key, x, y in [("Left", -10, 0),
+#                   ("Right", 10, 0),
+#                   ("Up", 0, -10),
+#                   ("Down", 0, 10)]:
+#     keys.append(Key([MOD, "control"], key, lazy.window.move_floating(x, y)))
+#     keys.append(Key([MOD, "shift"], key, lazy.window.resize_floating(x, y)))
+#     keys.append(Key([MOD, "mod1"], key, lazy.window.move_to_screen_edge(key)))
 
 # Groups
 activities = {
         'm': Group('main'),
         'w': Group('web', matches=[Match(wm_class=["firefox"])]),
-        'e': Group('editor', matches=[Match(wm_class='Alacritty')]),
-        'u': Group('music'),
-        'c': Group('chat', matches=[Match(wm_class="teams")])
+        'e': Group('editor'),
+        'u': Group('music', matches=[Match(wm_class=["Spotify"])]),
+        'c': Group('chat', matches=[Match(wm_instance_class=["Microsoft Teams - Preview"])])
 }
 
 groups = [ g for g in activities.values() ]
@@ -153,74 +153,92 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-screens = [
-    Screen(
-        top=bar.Gap(5),
-        right=bar.Gap(5),
-        left=bar.Gap(5),
-        bottom=bar.Bar(
-            [
-                widget.GroupBox(
-                    active=GRAY,
-                    inactive=DGRAY,
-                    block_highlight_text_color=BLACK,
-                    highlight_method='block',
-                    this_current_screen_border=GREEN,
-                    this_screen_border=BLUE,
-                ),
-                widget.Prompt(
-                    background=BLUE,
-                    foreground=BLACK,
-                ),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Systray(),
-                widget.Net(interface=["wlp2s0", "enp3s0"]),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.Battery(format='Batt {char} {percent:2.0%}'),
-                widget.PulseVolume(),
-                widget.KeyboardLayout(
-                    configured_keyboards=['us', 'es'],
-                    background=YELLOW,
-                    foreground=BLACK,
-                ),
-                widget.QuickExit(
-                    default_text='[ Bye ]',
-                    background=ORANGE,
-                    foreground=BLACK,
-                ),
-                widget.CurrentLayout(
-                    background=RED,
-                    foreground=BLACK,
-                ),
-            ],
-            24,
-        ),
-        wallpaper='~/Pictures/google-earth-view-2312.jpg',
-        wallpaper_mode='fill',
-    ),
-]
-
-# Drag floating layouts.
-mouse = [
-    Drag([MOD], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
-    Drag([MOD], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
-    Click([MOD], "Button2", lazy.window.bring_to_front())
-]
-
-# Autostart
-@hook.subscribe.startup_once
-def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.call([home])
+# screens = [
+#     Screen(
+#         top=bar.Gap(5),
+#         right=bar.Gap(5),
+#         left=bar.Gap(5),
+#         bottom=bar.Bar(
+#             [
+#                 widget.GroupBox(
+#                     active=GRAY,
+#                     inactive=DGRAY,
+#                     block_highlight_text_color=BLACK,
+#                     highlight_method='block',
+#                     this_current_screen_border=GREEN,
+#                     this_screen_border=BLUE,
+#                 ),
+#                 widget.WindowName(),
+#                 widget.Chord(
+#                     chords_colors={
+#                         'launch': ("#ff0000", "#ffffff"),
+#                     },
+#                     name_transform=lambda name: name.upper(),
+#                 ),
+#                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+#                 widget.Systray(),
+#                 widget.Net(interface=["wlp2s0", "enp3s0"]),
+#                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+#                 widget.Battery(format='Batt {char} {percent:2.0%}'),
+#                 widget.PulseVolume(),
+#                 widget.KeyboardLayout(
+#                     configured_keyboards=['us', 'es'],
+#                     background=YELLOW,
+#                     foreground=BLACK,
+#                 ),
+#                 widget.QuickExit(
+#                     default_text='[ Bye ]',
+#                     background=ORANGE,
+#                     foreground=BLACK,
+#                 ),
+#                 widget.CurrentLayout(
+#                     background=RED,
+#                     foreground=BLACK,
+#                 ),
+#             ],
+#             24,
+#         ),
+#         wallpaper='~/Pictures/destiny-2-2019-game-wallpapers.jpg',
+#         wallpaper_mode='fill',
+#     ),
+#     Screen(
+#         top=bar.Gap(5),
+#         right=bar.Gap(5),
+#         left=bar.Gap(5),
+#         bottom=bar.Bar([
+#             widget.GroupBox(
+#                     active=GRAY,
+#                     inactive=DGRAY,
+#                     block_highlight_text_color=BLACK,
+#                     highlight_method='block',
+#                     this_current_screen_border=GREEN,
+#                     this_screen_border=BLUE,
+#             ),
+#             widget.WindowName(),
+#             widget.CurrentLayout(
+#                 background=RED,
+#                 foreground=BLACK,
+#             ),
+#             ], 24),
+#         wallpaper='~/Pictures/destiny-2-2019-game-wallpapers.jpg',
+#         wallpaper_mode='fill',
+#     )
+# ]
+#
+# # Drag floating layouts.
+# mouse = [
+#     Drag([MOD], "Button1", lazy.window.set_position_floating(),
+#          start=lazy.window.get_position()),
+#     Drag([MOD], "Button3", lazy.window.set_size_floating(),
+#          start=lazy.window.get_size()),
+#     Click([MOD], "Button2", lazy.window.bring_to_front())
+# ]
+#
+# # Autostart
+# @hook.subscribe.startup_once
+# def autostart():
+#     home = os.path.expanduser('~/.config/qtile/autostart.sh')
+#     subprocess.call([home])
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
