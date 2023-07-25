@@ -1,0 +1,7 @@
+configuration {
+  modi: "combi";
+  font: "jetbrains mono extralight 10";
+  terminal: "kitty";
+  combi-modi: "drun,ssh";
+}
+@theme "simple-tokyonight"
