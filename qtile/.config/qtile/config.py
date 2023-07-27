@@ -133,7 +133,7 @@ screens = [
             ],
             24,
         ),
-        wallpaper='~/Pictures/destiny-2-2019-game-wallpapers.jpg',
+        wallpaper='~/Pictures/Neomuna_Nights.jpg',
         wallpaper_mode='fill',
     ),
     Screen(
@@ -141,7 +141,7 @@ screens = [
         right=bar.Gap(5),
         left=bar.Gap(5),
         bottom=bar.Gap(5),
-        wallpaper='~/Pictures/destiny-2-2019-game-wallpapers.jpg',
+        wallpaper='~/Pictures/Neomuna_Nights.jpg',
         wallpaper_mode='fill',
     )
 ]

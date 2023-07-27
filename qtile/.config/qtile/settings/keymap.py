@@ -16,7 +16,7 @@ KEYMAP = [
 
     # Move windows
     Key("M-S-h", lazy.layout.swap_left()),
-    Key("M-S-l", lazy.layout.swap_right()),
+    Key("M-S-r", lazy.layout.swap_right()),
     Key("M-S-j", lazy.layout.shuffle_down()),
     Key("M-S-k", lazy.layout.shuffle_up()),
 
@@ -41,10 +41,13 @@ KEYMAP = [
     Key("<XF86AudioRaiseVolume>", lazy.spawn("pulsemixer --change-volume 5")),
 
     # Keyboard layout
-    Key("M-C-<Space>", lazy.widget["keyboardlayout"].next_keyboard()),
+    Key("M-S-<Space>", lazy.widget["keyboardlayout"].next_keyboard()),
 
     # Custom applications
     Key('M-r', lazy.spawn("rofi -show combi"), desc="Launch application launcher"),
+
+    # Screenlock
+    Key('M-S-l', lazy.spawn("betterlockscreen -l blur"))
 ]
     
 
