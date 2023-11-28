@@ -16,6 +16,21 @@ require("formatter").setup({
 		python = {
 			require("formatter.filetypes.python").black,
 		},
+		json = {
+			require("formatter.filetypes.json").jq,
+		},
+    sql = {
+      function ()
+        return {
+          exe = "sql-formatter",
+          args = {
+            "-l",
+            "mariadb"
+          },
+          stdin = true,
+        } 
+      end 
+    },
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
 		["*"] = {
