@@ -37,6 +37,7 @@ return require('packer').startup(function(use)
   }
   use 'nvim-lualine/lualine.nvim'
   use { 'mhartington/formatter.nvim' }
+  use 'tpope/vim-fugitive'
   -- use 'tpope/vim-eunuch'
   -- use 'github/copilot.vim'
   -- use 'lervag/vimtex'
