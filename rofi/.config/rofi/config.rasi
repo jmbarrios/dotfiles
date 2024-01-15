@@ -1,6 +1,6 @@
 configuration {
   modi: "combi";
-  font: "jetbrains mono extralight 10";
+  font: "jetbrainsmono nerd font extralight 10";
   terminal: "kitty";
   combi-modi: "drun,ssh";
 }

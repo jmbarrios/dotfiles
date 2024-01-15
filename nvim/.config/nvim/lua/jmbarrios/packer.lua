@@ -40,5 +40,5 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   -- use 'tpope/vim-eunuch'
   -- use 'github/copilot.vim'
-  -- use 'lervag/vimtex'
+  use 'lervag/vimtex'
 end)
