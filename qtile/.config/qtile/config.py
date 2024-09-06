@@ -20,7 +20,7 @@ from settings.theme import colors
 # Set variables
 MOD = "mod4"
 MYTERM = "kitty"
-MYFONT = "JetBrains Mono"
+MYFONT = "JetBrainsMono Nerd Font"
 
 # Define theme colors
 MYCOLORS = [
@@ -115,7 +115,7 @@ screens = [
                 widget.Net(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
                 widget.Battery(format=' {char} {percent:2.0%}'),
-                widget.PulseVolume(),
+                # widget.PulseVolume(),
                 widget.KeyboardLayout(
                     configured_keyboards=["us", "es"],
                     background=colors["color2"],

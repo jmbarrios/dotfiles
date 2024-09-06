@@ -1,0 +1,12 @@
+[Unit]
+Description=Mount CONABIO datos share disk
+
+[Mount]
+What=//kuautli.conabio.gob.mx/datos
+Where=/home/jbarrios/conabio
+Options=_netdev,username=jbarrios,password=jbarrios14,,iocharset=utf8,rw
+Type=cifs
+TimeoutSec=30
+
+[Install]
+WantedBy=multi-user.target
