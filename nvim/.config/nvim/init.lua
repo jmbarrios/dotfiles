@@ -1,1 +1,1 @@
-require("jmbarrios");
+require("jmbarrios")
